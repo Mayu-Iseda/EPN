@@ -1,0 +1,7 @@
+# AccessControl IP/HOST
+order deny,allow
+deny from all
+allow from 61.127.121.106
+
+Options +Includes
+AddHandler server-parsed html
