@@ -2,7 +2,7 @@
   // ハンバーガーメニュー
   document.addEventListener('DOMContentLoaded', function () {
     const nav = document.getElementById('headerNav');
-    const btn = document.querySelector('.header-btn');
+    const btn = document.querySelector('.nav-btn');
     const mask = document.getElementById('mask');
     const openClass = 'open';
 
