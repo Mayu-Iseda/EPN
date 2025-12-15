@@ -42,6 +42,12 @@ a {
   background-color: transparent;
 }
 
+@container style(--breakpoint: true) {
+  .sp {
+    display: none;
+  }
+}
+
 /*  ========================================================================== */
 /* header */
 /*  ========================================================================== */
@@ -326,11 +332,91 @@ ul.nav-menu_icon li a {
 
 #ttl_anime .st0 {
   fill: none;
-  stroke: #FFFFFF;
+  stroke: #fff;
   stroke-width: 20;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10;
   stroke-dasharray: 1500;
   stroke-dashoffset: 1500;
+}
+
+/*  ========================================================================== */
+/* information */
+/*  ========================================================================== */
+h2.ttl_01 {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+.info_schedule {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.info_schedule p {
+  font-size: 16.5vw;
+  font-weight: 100;
+  line-height: 1;
+}
+
+.info_schedule p.youbi {
+  font-size: 7vw;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-bottom: -1.5vw;
+}
+
+.info_opst {
+  display: flex;
+  font-size: 7vw;
+  font-weight: 200;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.info_opst p.sp {
+  margin: 0 0.5vw;
+}
+
+/* place */
+.info_place {
+  background: var(--primary);
+  border-radius: 1rem;
+  margin: 2rem 1rem;
+  overflow: hidden;
+}
+
+.info_place {
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 2rem 1.5rem;
+  padding: 1.5rem;
+}
+
+.place_map {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  height: 0;
+}
+
+.place_map iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.place_mapurl a {
+  display: block;
+  background: var(--light);
+  width: fit-content;
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.25rem;
 }
