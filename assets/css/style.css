@@ -134,6 +134,10 @@ ul.nav-menu_icon li a {
   padding: 10px;
 }
 
+ul.nav-menu_icon li a img {
+  width: 24px;
+}
+
 /* btn */
 .nav-btn {
   position: relative;
@@ -309,7 +313,8 @@ ul.nav-menu_icon li a {
   display: block;
   color: var(--white);
   font-size: 20px;
-  padding: 8px;
+  padding: 7px;
+  width: 38px;
 }
 
 /*  ========================================================================== */
@@ -344,11 +349,16 @@ ul.nav-menu_icon li a {
 /*  ========================================================================== */
 /* information */
 /*  ========================================================================== */
+.info {
+  margin: 0 5vw 10vw;
+}
+
 h2.ttl_01 {
-  font-size: 0.9rem;
+  font-size: 3.7vw;
   font-weight: 300;
 }
 
+/* 日程 */
 .info_schedule {
   display: flex;
   flex-direction: row;
@@ -356,7 +366,7 @@ h2.ttl_01 {
 }
 
 .info_schedule p {
-  font-size: 16.5vw;
+  font-size: 15.15vw;
   font-weight: 100;
   line-height: 1;
 }
@@ -368,40 +378,36 @@ h2.ttl_01 {
   margin-bottom: -1.5vw;
 }
 
+/* 開場開演 */
 .info_opst {
   display: flex;
-  font-size: 7vw;
+  font-size: 6.5vw;
   font-weight: 200;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .info_opst p.sp {
-  margin: 0 0.5vw;
+  margin: 0 1.5vw;
 }
 
-/* place */
-.info_place {
-  background: var(--primary);
-  border-radius: 1rem;
-  margin: 2rem 1rem;
-  overflow: hidden;
-}
-
+/* 場所 */
 .info_place {
   display: flex;
   flex-direction: column;
   background: var(--primary);
   border-radius: 0.5rem;
   overflow: hidden;
-  margin: 2rem 1.5rem;
+  margin-bottom: 2rem;
   padding: 1.5rem;
 }
 
 .place_map {
   position: relative;
-  width: 100%;
   padding-top: 56.25%;
+  margin-bottom: 1rem;
+  width: 100%;
   height: 0;
 }
 
@@ -413,10 +419,72 @@ h2.ttl_01 {
   height: 100%;
 }
 
-.place_mapurl a {
+.place_detail {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.place_btn {
+  order: 1;
+  margin-bottom: 1rem;
+}
+
+.place_btn a {
   display: block;
   background: var(--light);
-  width: fit-content;
-  padding: 0.3rem 0.55rem;
   border-radius: 0.25rem;
+  padding: 0.3rem 0.55rem;
+  width: fit-content;
+}
+
+.place_name {
+  order: 2;
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.place_address {
+  order: 3;
+  margin-bottom: 0.5rem;
+}
+
+.plase_url {
+  display: flex;
+  order: 4;
+}
+
+.plase_url a {
+  display: block;
+  border: 1px solid var(--white);
+  border-radius: 0.25rem;
+  color: var(--white);
+  line-height: 1.75rem;
+  text-align: center;
+  margin-right: 0.7rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+/* チケット料金 */
+.info_ticket_ttl p {
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 4px;
+}
+
+.info_ticket_ttl p::after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid var(--white);
+  margin: 1rem 0;
+  width: 4rem;
+}
+
+.info_ticket_price p {
+  font-size: 1.35rem;
+  font-weight: 200;
+  letter-spacing: 4px;
 }
