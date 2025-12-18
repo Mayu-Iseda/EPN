@@ -11,7 +11,7 @@
   --primary-dark: #1D2131;
   --primary-light: #658090;
   --light-beige: #B69385;
-  --light: #f8f9fa;
+  --light: #d9d9d9;
 
   --breakpoint: false;
 
@@ -40,6 +40,10 @@ a {
   color: var(--primary);
   text-decoration: none;
   background-color: transparent;
+}
+
+.ls0 {
+  letter-spacing: 0;
 }
 
 @container style(--breakpoint: true) {
@@ -323,9 +327,9 @@ ul.nav-menu_icon li a img {
 .ttl_cover {
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
   background-image: url(/assets/img/common/main_img.png);
-  height: 100vw;
+  height: 92vw;
 }
 
 .ttl_logo {
@@ -469,6 +473,10 @@ h2.ttl_01 {
 }
 
 /* チケット料金 */
+.info_ticket {
+  margin: 0 0 5rem;
+}
+
 .info_ticket_ttl p {
   font-size: 2rem;
   font-weight: 200;
@@ -487,4 +495,128 @@ h2.ttl_01 {
   font-size: 1.35rem;
   font-weight: 200;
   letter-spacing: 4px;
+  margin-bottom: 1rem;
+}
+
+.link_btn01 a {
+  display: block;
+  background: var(--secondary);
+  border-radius: 0.5rem;
+  color: var(--white);
+  padding: 0.5rem 0.75rem;
+  width: fit-content;
+}
+
+/*  ========================================================================== */
+/* band */
+/*  ========================================================================== */
+.band {
+  background-size: contain;
+  background-repeat: repeat;
+  background-position: top center;
+  background-image: url(/assets/img/common/band_bg.png);
+  border-radius: 0 10vw 0 0;
+  padding: 2.5rem 5vw;
+  margin-bottom: 4rem;
+}
+
+h2.ttl_02 {
+  font-weight: 200;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.band_flexbox {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.band_group {
+  position: relative;
+  background: var(--light);
+  border-radius: 0.5rem;
+  color: var(--primary);
+  padding: 1.2rem 1rem 1rem;
+  width: 100%;
+  max-width: 64vw;
+  z-index: 1;
+}
+
+.band_group.left {
+  margin: 0 auto 4rem 0;
+}
+
+.band_group.center {
+  margin: 0 auto 4rem;
+}
+
+.band_group.right {
+  margin: 0 0 4rem auto;
+}
+
+.band_detail {
+  position: absolute;
+  background: var(--secondary);
+  border-radius: 0 1rem 1rem 0;
+  color: var(--white);
+  font-size: 0.75rem;
+  top: -0.75rem;
+  left: -1px;
+  padding: 0.2rem 0.6rem;
+  width: fit-content;
+  z-index: 2;
+}
+
+.center .band_detail {
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  border-radius: 1rem;
+}
+
+.right .band_detail {
+  left: initial;
+  right: -1px;
+  border-radius: 1rem 0 0 1rem;
+}
+
+.band_name {
+  font-weight: 200;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.band_member {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/*  ========================================================================== */
+/* timetable */
+/*  ========================================================================== */
+.timetable {
+  background: var(--light);
+  border-radius: 10vw 0 0 0;
+  color: var(--black);
+  margin-left: 5vw;
+  padding: 10vw;
+}
+
+h2.ttl_03 {
+  color: var(--secondary);
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.timetable_inner {
+  font-size: 1.4rem;
+  font-weight: 200;
+}
+
+.tt_t {
+  padding: 0 1rem 1rem 0;
 }

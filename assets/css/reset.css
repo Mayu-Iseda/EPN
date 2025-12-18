@@ -83,12 +83,12 @@
 
 :where(table) {
   border-collapse: collapse;
-  border: 1px solid;
+  border: none;
 }
 
 :where(th, td) {
-  border: 1px solid;
-  padding: 0.25em 0.5em;
+  border: none;
+  padding: 0;
   vertical-align: top;
 }
 
