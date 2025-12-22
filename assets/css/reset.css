@@ -15,14 +15,13 @@
 :where(html) {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-}
-
-:where(html) {
   line-height: 1.5;
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
 }
 
-:where(html) {
-  scrollbar-gutter: stable;
+:where(body) {
+  overflow-x: hidden;
 }
 
 :where(h1) {

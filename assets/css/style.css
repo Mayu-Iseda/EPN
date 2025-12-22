@@ -20,6 +20,12 @@
   }
 }
 
+@container style(--breakpoint: true) {
+  .sp {
+    display: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -40,16 +46,66 @@ a {
   color: var(--primary);
   text-decoration: none;
   background-color: transparent;
+  transition: .2s;
+}
+
+h1, h2 {
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+
+.small {
+  font-size: 80%;
 }
 
 .ls0 {
   letter-spacing: 0;
 }
 
-@container style(--breakpoint: true) {
-  .sp {
-    display: none;
-  }
+/*  ========================================================================== */
+/* animation */
+/*  ========================================================================== */
+/* 下からふわっと */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-up.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 下からふわっと（時間差） */
+.fade {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+  transition-delay: var(--delay, 0s);
+}
+
+.fade-up {
+  transform: translateY(30px);
+}
+
+.fade.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 右からふわっと */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-right.is-active {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /*  ========================================================================== */
@@ -61,7 +117,7 @@ a {
   left: 0;
   right: 0;
   height: 70px;
-  z-index: 5;
+  z-index: 10;
 }
 
 #headerNav {
@@ -83,7 +139,7 @@ a {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transition: .5s;
-  z-index: 3;
+  z-index: 9;
 }
 
 .open .nav-area {
@@ -300,7 +356,7 @@ ul.nav-menu_icon li a img {
   height: 100%;
   background: var(--background);
   opacity: .8;
-  z-index: 2;
+  z-index: 8;
   cursor: pointer;
   transition: all .5s;
 }
@@ -319,6 +375,58 @@ ul.nav-menu_icon li a img {
   font-size: 20px;
   padding: 7px;
   width: 38px;
+}
+
+@container style(--breakpoint: true) {
+  .nav-area {
+    background: transparent;
+    left: 0;
+    bottom: auto;
+    width: 100%;
+  }
+
+  .nav-btn, .nav-btn span {
+    display: none;
+  }
+
+  .nav-menu {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-menu_list {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .nav-menu_list li {
+    width: fit-content;
+    text-align: left;
+  }
+
+  .nav-menu ul li a {
+    font-size: 1.2rem;
+    padding: 10px 16px;
+  }
+
+  .nav-menu ul li a img {
+    width: 36px;
+  }
+
+  ul.nav-menu_icon li a {
+    padding: 10px;
+  }
+
+  ul.nav-menu_icon li a img {
+    width: 24px;
+  }
+
+  .header-icon {
+    display: none;
+  }
 }
 
 /*  ========================================================================== */
@@ -445,7 +553,7 @@ h2.ttl_01 {
 
 .place_name {
   order: 2;
-  font-size: 1.15rem;
+  font-size: 2.6rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
 }
@@ -461,15 +569,19 @@ h2.ttl_01 {
 }
 
 .plase_url a {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid var(--white);
   border-radius: 0.25rem;
   color: var(--white);
-  line-height: 1.75rem;
-  text-align: center;
+  padding: 0.3rem 0.5rem;
   margin-right: 0.7rem;
-  width: 2rem;
-  height: 2rem;
+}
+
+.plase_url a:hover {
+  background: var(--white);
+  color: var(--primary);
 }
 
 /* チケット料金 */
@@ -478,8 +590,6 @@ h2.ttl_01 {
 }
 
 .info_ticket_ttl p {
-  font-size: 2rem;
-  font-weight: 200;
   letter-spacing: 4px;
 }
 
@@ -507,6 +617,100 @@ h2.ttl_01 {
   width: fit-content;
 }
 
+@container style(--breakpoint: true) {
+  .info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vw;
+  }
+
+  h2.ttl_01 {
+    font-size: 2.7vw;
+    width: 100%;
+    line-height: 1;
+  }
+
+  .info_schedule p {
+    font-size: 10.8vw;
+  }
+
+  .info_schedule p.youbi {
+    font-size: 5vw;
+    margin-bottom: -1vw;
+  }
+
+  .info_opst {
+    position: relative;
+    font-size: 3.5vw;
+    font-weight: 200;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding-left: 2vw;
+    margin: 0;
+  }
+
+  .info_opst::before {
+    position: absolute;
+    top: 13%;
+    left: 0;
+    content: "";
+    width: 1px;
+    height: 80%;
+    background-color: var(--white);
+  }
+
+  .info_place {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    width: 100%;
+    margin: 3vw 0;
+  }
+
+  .place_map {
+    padding-top: 32.25%;
+    margin-bottom: 0;
+    width: 54%;
+  }
+
+  .place_detail {
+    flex: 1;
+  }
+
+  .place_btn a {
+    font-size: 2vw;
+    padding: 0.8vw 1.55vw;
+  }
+
+  .place_name {
+    order: 1;
+    font-size: 2.6vw;
+    font-weight: 200;
+    margin-bottom: 1vw;
+    letter-spacing: 3px;
+  }
+
+  .plase_url {
+    order: 2;
+    margin-bottom: 3vw;
+  }
+
+  .plase_url a {
+    padding: 0.5vw 0.75vw;
+    margin-right: 0.7vw;
+    font-size: 1.5vw;
+  }
+
+  .place_address {
+    order: 3;
+    margin-bottom: 1.5vw;
+    font-size: 1.8vw;
+  }
+}
+
 /*  ========================================================================== */
 /* band */
 /*  ========================================================================== */
@@ -521,9 +725,7 @@ h2.ttl_01 {
 }
 
 h2.ttl_02 {
-  font-weight: 200;
   text-align: center;
-  font-size: 2rem;
   margin-bottom: 3rem;
 }
 
@@ -598,25 +800,78 @@ h2.ttl_02 {
 /*  ========================================================================== */
 .timetable {
   background: var(--light);
-  border-radius: 10vw 0 0 0;
+  border-radius: 10vw 0 0 10vw;
   color: var(--black);
-  margin-left: 5vw;
+  margin: 0 0 5rem 16vw;
   padding: 10vw;
 }
 
 h2.ttl_03 {
   color: var(--secondary);
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 500;
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
 .timetable_inner {
-  font-size: 1.4rem;
-  font-weight: 200;
+  font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .tt_t {
-  padding: 0 1rem 1rem 0;
+  padding: 0 0.88rem 0.88rem 0;
+}
+
+/*  ========================================================================== */
+/* ticket */
+/*  ========================================================================== */
+.ticket {
+  background: var(--secondary);
+  padding: 5vw;
+}
+
+h2.ttl_04 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.link_btn02 a {
+  display: block;
+  background: var(--white);
+  border-radius: 0.5rem;
+  color: var(--secondary);
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.75rem 1.25rem;
+  margin: 1rem auto;
+  width: fit-content;
+}
+
+/*  ========================================================================== */
+/* footer */
+/*  ========================================================================== */
+footer {
+  position: relative;
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.pagetop {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.pagetop a {
+  display: block;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 44px;
+  line-height: 1.2;
+  margin: 10px;
+  width: 58px;
+  height: 58px;
 }
