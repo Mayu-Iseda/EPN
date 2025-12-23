@@ -20,14 +20,9 @@
   }
 }
 
-@container style(--breakpoint: true) {
-  .sp {
-    display: none;
-  }
-}
-
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px;
 }
 
 body {
@@ -46,7 +41,7 @@ a {
   color: var(--primary);
   text-decoration: none;
   background-color: transparent;
-  transition: .2s;
+  transition: .4s;
 }
 
 h1, h2 {
@@ -56,11 +51,25 @@ h1, h2 {
 }
 
 .small {
-  font-size: 80%;
+  font-size: 70%;
 }
 
 .ls0 {
   letter-spacing: 0;
+}
+
+.pc {
+  display: none;
+}
+
+@container style(--breakpoint: true) {
+  .sp {
+    display: none;
+  }
+
+  .pc {
+    display: block;
+  }
 }
 
 /*  ========================================================================== */
@@ -81,10 +90,8 @@ h1, h2 {
 /* 下からふわっと（時間差） */
 .fade {
   opacity: 0;
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-  transition-delay: var(--delay, 0s);
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .fade-up {
@@ -94,6 +101,11 @@ h1, h2 {
 .fade.is-active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* 戻る時は遅延させない */
+.fade:not(.is-active) {
+  transition-delay: 0s;
 }
 
 /* 右からふわっと */
@@ -111,13 +123,19 @@ h1, h2 {
 /*  ========================================================================== */
 /* header */
 /*  ========================================================================== */
-.header {
+#header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;
-  z-index: 10;
+  height: 64px;
+  z-index: 100;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+#header.is-scrolled {
+  background-color: var(--primary);
 }
 
 #headerNav {
@@ -139,7 +157,7 @@ h1, h2 {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transition: .5s;
-  z-index: 9;
+  z-index: 99;
 }
 
 .open .nav-area {
@@ -427,6 +445,10 @@ ul.nav-menu_icon li a img {
   .header-icon {
     display: none;
   }
+
+  .open #mask {
+    display: none;
+  }
 }
 
 /*  ========================================================================== */
@@ -466,7 +488,7 @@ ul.nav-menu_icon li a img {
 }
 
 h2.ttl_01 {
-  font-size: 3.7vw;
+  font-size: 3.28vw;
   font-weight: 300;
 }
 
@@ -517,10 +539,12 @@ h2.ttl_01 {
 
 .place_map {
   position: relative;
+  border-radius: 0.25rem;
   padding-top: 56.25%;
   margin-bottom: 1rem;
   width: 100%;
   height: 0;
+  overflow: hidden;
 }
 
 .place_map iframe {
@@ -551,15 +575,20 @@ h2.ttl_01 {
   width: fit-content;
 }
 
+.place_btn a:hover {
+  background: var(--white);
+}
+
 .place_name {
   order: 2;
-  font-size: 2.6rem;
+  font-size: 1.15rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
 }
 
 .place_address {
   order: 3;
+  font-size: 0.88rem;
   margin-bottom: 0.5rem;
 }
 
@@ -590,6 +619,8 @@ h2.ttl_01 {
 }
 
 .info_ticket_ttl p {
+  font-size: 2rem;
+  font-weight: 200;
   letter-spacing: 4px;
 }
 
@@ -611,10 +642,16 @@ h2.ttl_01 {
 .link_btn01 a {
   display: block;
   background: var(--secondary);
+  border: 1px solid var(--secondary);
   border-radius: 0.5rem;
   color: var(--white);
   padding: 0.5rem 0.75rem;
   width: fit-content;
+}
+
+.link_btn01 a:hover {
+  background-color: var(--white);
+  color: var(--secondary);
 }
 
 @container style(--breakpoint: true) {
@@ -624,12 +661,13 @@ h2.ttl_01 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1vw;
+    margin: 0 5vw 5vw;
   }
 
   h2.ttl_01 {
     font-size: 2.7vw;
-    width: 100%;
     line-height: 1;
+    width: 100%;
   }
 
   .info_schedule p {
@@ -654,30 +692,37 @@ h2.ttl_01 {
 
   .info_opst::before {
     position: absolute;
+    background-color: var(--white);
     top: 13%;
     left: 0;
     content: "";
     width: 1px;
     height: 80%;
-    background-color: var(--white);
   }
 
   .info_place {
     display: flex;
     flex-direction: row;
     gap: 2vw;
-    width: 100%;
     margin: 3vw 0;
+    padding: 3vw;
+    width: 100%;
   }
 
   .place_map {
-    padding-top: 32.25%;
+    border-radius: 0.5vw;
     margin-bottom: 0;
-    width: 54%;
+    padding-top: 32.25%;
+    width: 52%;
   }
 
   .place_detail {
     flex: 1;
+  }
+
+  .place_btn {
+    order: 4;
+    margin-bottom: 0;
   }
 
   .place_btn a {
@@ -689,13 +734,13 @@ h2.ttl_01 {
     order: 1;
     font-size: 2.6vw;
     font-weight: 200;
-    margin-bottom: 1vw;
     letter-spacing: 3px;
+    margin-bottom: 1vw;
   }
 
   .plase_url {
     order: 2;
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
   }
 
   .plase_url a {
@@ -708,6 +753,41 @@ h2.ttl_01 {
     order: 3;
     margin-bottom: 1.5vw;
     font-size: 1.8vw;
+  }
+
+  .info_ticket {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .info_ticket_ttl p {
+    font-size: 3.6vw;
+    padding-right: 2.5vw;
+    letter-spacing: 6px;
+  }
+
+  .info_ticket_ttl p::after {
+    display: none;
+  }
+
+  .info_ticket_price {
+    border-left: 1px solid var(--white);
+    padding-left: 2.5vw;
+  }
+
+  .info_ticket_price p {
+    font-size: 3.5vw;
+    letter-spacing: 6px;
+  }
+
+  .link_btn01 a {
+    font-size: 1.88vw;
+    margin-bottom: 2.5vw;
+    border-radius: 0.75vw;
+    padding: 1.3vw 1.88vw;
   }
 }
 
@@ -741,8 +821,8 @@ h2.ttl_02 {
   border-radius: 0.5rem;
   color: var(--primary);
   padding: 1.2rem 1rem 1rem;
-  width: 100%;
-  max-width: 64vw;
+  width: 55vw;
+  min-width: 220px;
   z-index: 1;
 }
 
@@ -764,9 +844,9 @@ h2.ttl_02 {
   border-radius: 0 1rem 1rem 0;
   color: var(--white);
   font-size: 0.75rem;
-  top: -0.75rem;
+  top: -0.88rem;
   left: -1px;
-  padding: 0.2rem 0.6rem;
+  padding: 0.35rem 0.75rem;
   width: fit-content;
   z-index: 2;
 }
@@ -795,6 +875,110 @@ h2.ttl_02 {
   line-height: 1.8;
 }
 
+@container style(--breakpoint: true) {
+  .band {
+    background-size: cover;
+    background-repeat: repeat-y;
+    padding: 5vw;
+  }
+
+  .band_flexbox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3vw;
+  }
+
+  .band_flexbox .fade {
+    transition-delay: calc(var(--i) * 0.15s);
+  }
+
+  .band_flexbox .fade:nth-child(1) {
+    --i: 0;
+  }
+
+  .band_flexbox .fade:nth-child(2) {
+    --i: 1;
+  }
+
+  .band_flexbox .fade:nth-child(3) {
+    --i: 2;
+  }
+
+  .band_flexbox .fade:nth-child(4) {
+    --i: 0;
+  }
+
+  .band_flexbox .fade:nth-child(5) {
+    --i: 1;
+  }
+
+  .band_flexbox .fade:nth-child(6) {
+    --i: 2;
+  }
+
+  .band_flexbox .fade:nth-child(7) {
+    --i: 0;
+  }
+
+  .band_flexbox .fade:nth-child(8) {
+    --i: 1;
+  }
+
+  h2.ttl_02, .band_group {
+    width: auto;
+    min-width: auto;
+  }
+
+  h2.ttl_02 {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.5vw;
+    letter-spacing: 6px;
+  }
+
+  .band_group.left, .band_group.center, .band_group.right {
+    margin: 0;
+    padding: 2vw 2vw 1.25vw;
+  }
+
+  .band_detail, .center .band_detail, .right .band_detail {
+    border-radius: 0 2vw 2vw 0;
+    color: var(--white);
+    font-size: 1.25vw;
+    top: -1.35vw;
+    left: -1px;
+    right: auto;
+    padding: 0.75vw 1.35vw;
+  }
+
+  .band_name {
+    font-size: 2.5vw;
+    margin: 0.88vw 0 0.65vw;
+  }
+
+  .band_member {
+    font-size: 1.88vw;
+    line-height: 1.5;
+  }
+
+  td.member_part, td.member_name {
+    padding-bottom: 0.65vw;
+  }
+
+  .band_space {
+    position: relative;
+  }
+
+  .band_space_img {
+    position: absolute;
+    bottom: 3vw;
+    right: 2vw;
+    width: 18vw;
+  }
+}
+
 /*  ========================================================================== */
 /* timetable */
 /*  ========================================================================== */
@@ -802,15 +986,16 @@ h2.ttl_02 {
   background: var(--light);
   border-radius: 10vw 0 0 10vw;
   color: var(--black);
-  margin: 0 0 5rem 16vw;
-  padding: 10vw;
+  margin: 0 0 5rem auto;
+  padding: 10vw 0 10vw 13vw;
+  width: fit-content;
+  min-width: 300px;
 }
 
 h2.ttl_03 {
   color: var(--secondary);
   font-size: 1.5rem;
   font-weight: 500;
-  text-align: center;
   margin-bottom: 1.5rem;
 }
 
@@ -821,6 +1006,35 @@ h2.ttl_03 {
 
 .tt_t {
   padding: 0 0.88rem 0.88rem 0;
+}
+
+@container style(--breakpoint: true) {
+  .timetable {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    justify-content: flex-end;
+    padding: 9vw 0 9vw 11vw;
+  }
+
+  h2.ttl_03 {
+    color: #bababa;
+    font-size: 7vw;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0;
+    letter-spacing: 8px;
+    width: 11vw;
+    writing-mode: vertical-rl;
+    order: 2;
+  }
+
+  .timetable_inner {
+    font-size: 2.5vw;
+    line-height: 2;
+    letter-spacing: 5px;
+    order: 1;
+  }
 }
 
 /*  ========================================================================== */
@@ -839,6 +1053,7 @@ h2.ttl_04 {
 .link_btn02 a {
   display: block;
   background: var(--white);
+  border: 1px solid var(--secondary);
   border-radius: 0.5rem;
   color: var(--secondary);
   font-size: 1.1rem;
@@ -846,6 +1061,50 @@ h2.ttl_04 {
   padding: 0.75rem 1.25rem;
   margin: 1rem auto;
   width: fit-content;
+}
+
+.link_btn02 a:hover {
+  background: var(--secondary);
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+@container style(--breakpoint: true) {
+  .ticket {
+    padding: 5vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 4vw;
+  }
+
+  h2.ttl_04 {
+    font-size: 4vw;
+    font-weight: 100;
+    letter-spacing: 5px;
+    text-align: left;
+  }
+
+  .ticket_detail {
+    font-size: 2.2vw;
+    text-align: center;
+  }
+
+  .link_btn02 a {
+    border-radius: 0.5vw;
+    font-size: 2vw;
+    font-weight: 500;
+    padding: 0.75vw 1.25vw;
+  }
+
+  .ticket_detail {
+    font-size: 2.2vw;
+    border: 1px solid var(--white);
+    border-radius: 0.5vw;
+    padding: 3vw;
+  }
 }
 
 /*  ========================================================================== */
@@ -857,6 +1116,11 @@ footer {
   padding: 3rem 0;
 }
 
+.copyright {
+  font-size: 1.25rem;
+}
+
+/* トップへ戻るボタン */
 .pagetop {
   position: fixed;
   bottom: 0;
@@ -874,4 +1138,21 @@ footer {
   margin: 10px;
   width: 58px;
   height: 58px;
+}
+
+.pagetop a:hover {
+  background: var(--white);
+  color: var(--primary);
+}
+
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.to-top.is-active {
+  pointer-events: auto;
 }

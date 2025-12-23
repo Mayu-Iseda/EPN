@@ -23,6 +23,26 @@
     });
   });
 
+  // スクロールしたらヘッダーに背景色
+  const header = document.getElementById('header');
+  const pcWidth = 768;
+
+  function handleHeaderBg() {
+    if (window.innerWidth < pcWidth) {
+      header.classList.remove('is-scrolled');
+      return;
+    }
+
+    if (window.scrollY > 300) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleHeaderBg);
+  window.addEventListener('resize', handleHeaderBg);
+
   // ふわっと表示
   document.addEventListener('DOMContentLoaded', () => {
     const targets = document.querySelectorAll('.js-fade');
@@ -44,6 +64,20 @@
     }, options);
 
     targets.forEach(target => observer.observe(target));
+  });
+
+  // トップへ戻るボタン
+  document.addEventListener('DOMContentLoaded', () => {
+    const toTopBtn = document.querySelector('.js-to-top');
+    const showPoint = 300; // ← 現れるまでのスクロール量
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > showPoint) {
+        toTopBtn.classList.add('is-active');
+      } else {
+        toTopBtn.classList.remove('is-active');
+      }
+    });
   });
 
 }
