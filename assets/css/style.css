@@ -18,6 +18,10 @@
   @media (min-width: 768px) {
     --breakpoint: true;
   }
+
+  @media (min-width: 1080px) {
+    --breakpoint-md: true;
+  }
 }
 
 html {
@@ -26,7 +30,7 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: var(--primary-dark);
   color: var(--white);
   font-family: "Lexend Deca", "Noto Sans JP", -apple-system, BlinkMacSystemFont,
     "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif,
@@ -34,7 +38,10 @@ body {
   font-size: 1rem;
   font-weight: 300;
   letter-spacing: 2px;
-  min-height: 1000px;
+  background-repeat: no-repeat;
+  background-size: 118px;
+  background-position: bottom 100px right 18px;
+  background-image: url(/assets/img/common/hane_w.png);
 }
 
 a {
@@ -51,7 +58,7 @@ h1, h2 {
 }
 
 .small {
-  font-size: 70%;
+  font-size: 80%;
 }
 
 .ls0 {
@@ -118,6 +125,28 @@ h1, h2 {
 .fade-in-right.is-active {
   opacity: 1;
   transform: translateX(0);
+}
+
+/*  ========================================================================== */
+/* page */
+/*  ========================================================================== */
+main {
+  background: var(--background);
+}
+
+@container style(--breakpoint: true) {
+  #home {
+    border-right: 0.5rem solid var(--background);
+    border-left: 0.5rem solid var(--background);
+    width: 768px;
+    margin: 0 auto 0 auto;
+  }
+}
+
+@container style(--breakpoint-md: true) {
+  #home {
+    margin: 0 22rem 0 auto;
+  }
 }
 
 /*  ========================================================================== */
@@ -451,6 +480,44 @@ ul.nav-menu_icon li a img {
   }
 }
 
+@container style(--breakpoint-md: true) {
+  #header.is-scrolled {
+    background-color: transparent;
+  }
+
+  .nav-area {
+    left: auto;
+    right: 0;
+    bottom: auto;
+    width: fit-content;
+  }
+
+  .open .nav-area {
+    left: auto;
+  }
+
+  .nav-menu {
+    margin: 2rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .nav-menu_list {
+    flex-direction: column;
+    align-items: end;
+    justify-content: flex-start;
+  }
+
+  .nav-menu ul li a {
+    font-size: 1.5rem;
+    padding: 24px 8px;
+    letter-spacing: 4px;
+  }
+}
+
 /*  ========================================================================== */
 /* ttl */
 /*  ========================================================================== */
@@ -655,38 +722,48 @@ h2.ttl_01 {
 }
 
 @container style(--breakpoint: true) {
+  .ttl_cover {
+    height: 700px;
+  }
+
+  .ttl_logo {
+    position: relative;
+    width: 330px;
+    top: 130px;
+    left: 80px;
+  }
+
   .info {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1vw;
-    margin: 0 5vw 5vw;
+    gap: 0.5rem 1rem;
+    margin: 0 2rem 2rem;
   }
 
   h2.ttl_01 {
-    font-size: 2.7vw;
+    font-size: 1.225rem;
     line-height: 1;
-    width: 100%;
   }
 
   .info_schedule p {
-    font-size: 10.8vw;
+    font-size: 5rem;
   }
 
   .info_schedule p.youbi {
-    font-size: 5vw;
-    margin-bottom: -1vw;
+    font-size: 2.5rem;
+    margin-bottom: -0.5rem;
   }
 
   .info_opst {
     position: relative;
-    font-size: 3.5vw;
+    font-size: 1.8rem;
     font-weight: 200;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: flex-start;
-    padding-left: 2vw;
+    padding-left: 1.2rem;
     margin: 0;
   }
 
@@ -702,18 +779,15 @@ h2.ttl_01 {
 
   .info_place {
     display: flex;
-    flex-direction: row;
-    gap: 2vw;
-    margin: 3vw 0;
-    padding: 3vw;
+    gap: 1rem 2rem;
+    margin: 2rem 0 3rem;
+    padding: 2rem;
     width: 100%;
   }
 
   .place_map {
-    border-radius: 0.5vw;
+    border-radius: 0.5rem;
     margin-bottom: 0;
-    padding-top: 32.25%;
-    width: 52%;
   }
 
   .place_detail {
@@ -721,38 +795,34 @@ h2.ttl_01 {
   }
 
   .place_btn {
-    order: 4;
-    margin-bottom: 0;
+    /* order: 4; */
   }
 
   .place_btn a {
-    font-size: 2vw;
-    padding: 0.8vw 1.55vw;
+    font-size: 1.35rem;
+    padding: 0.75rem 1rem;
   }
 
   .place_name {
-    order: 1;
-    font-size: 2.6vw;
+    /* order: 1; */
+    font-size: 2.15rem;
     font-weight: 200;
     letter-spacing: 3px;
-    margin-bottom: 1vw;
   }
 
   .plase_url {
-    order: 2;
-    margin-bottom: 2vw;
+    /* order: 2; */
   }
 
   .plase_url a {
-    padding: 0.5vw 0.75vw;
-    margin-right: 0.7vw;
-    font-size: 1.5vw;
+    padding: 0.35rem 0.58rem;
+    margin-right: 0.7rem;
+    font-size: 1.1rem;
   }
 
   .place_address {
-    order: 3;
-    margin-bottom: 1.5vw;
-    font-size: 1.8vw;
+    /* order: 3; */
+    font-size: 1.3rem;
   }
 
   .info_ticket {
@@ -764,8 +834,8 @@ h2.ttl_01 {
   }
 
   .info_ticket_ttl p {
-    font-size: 3.6vw;
-    padding-right: 2.5vw;
+    font-size: 2.2rem;
+    padding-right: 1.65rem;
     letter-spacing: 6px;
   }
 
@@ -775,19 +845,19 @@ h2.ttl_01 {
 
   .info_ticket_price {
     border-left: 1px solid var(--white);
-    padding-left: 2.5vw;
+    padding-left: 1.65rem;
   }
 
   .info_ticket_price p {
-    font-size: 3.5vw;
+    font-size: 2rem;
     letter-spacing: 6px;
   }
 
   .link_btn01 a {
-    font-size: 1.88vw;
-    margin-bottom: 2.5vw;
-    border-radius: 0.75vw;
-    padding: 1.3vw 1.88vw;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
   }
 }
 
@@ -866,7 +936,7 @@ h2.ttl_02 {
 
 .band_name {
   font-weight: 200;
-  font-size: 1.5rem;
+  font-size: 1.15rem;
   margin-bottom: 0.25rem;
 }
 
@@ -879,13 +949,14 @@ h2.ttl_02 {
   .band {
     background-size: cover;
     background-repeat: repeat-y;
-    padding: 5vw;
+    padding: 5rem 2rem;
+    border-radius: 0 5rem 0 0;
   }
 
   .band_flexbox {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3vw;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
   }
 
   .band_flexbox .fade {
@@ -901,19 +972,19 @@ h2.ttl_02 {
   }
 
   .band_flexbox .fade:nth-child(3) {
-    --i: 2;
-  }
-
-  .band_flexbox .fade:nth-child(4) {
     --i: 0;
   }
 
-  .band_flexbox .fade:nth-child(5) {
+  .band_flexbox .fade:nth-child(4) {
     --i: 1;
   }
 
+  .band_flexbox .fade:nth-child(5) {
+    --i: 0;
+  }
+
   .band_flexbox .fade:nth-child(6) {
-    --i: 2;
+    --i: 1;
   }
 
   .band_flexbox .fade:nth-child(7) {
@@ -934,37 +1005,38 @@ h2.ttl_02 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.5vw;
+    font-size: 2rem;
     letter-spacing: 6px;
   }
 
   .band_group.left, .band_group.center, .band_group.right {
     margin: 0;
-    padding: 2vw 2vw 1.25vw;
+    padding: 2rem 2rem 1.25rem;
   }
 
   .band_detail, .center .band_detail, .right .band_detail {
-    border-radius: 0 2vw 2vw 0;
+    border-radius: 0 2rem 2rem 0;
     color: var(--white);
-    font-size: 1.25vw;
-    top: -1.35vw;
+    font-size: 1rem;
+    top: -1.25rem;
     left: -1px;
     right: auto;
-    padding: 0.75vw 1.35vw;
+    padding: 0.5rem 1rem;
   }
 
   .band_name {
-    font-size: 2.5vw;
-    margin: 0.88vw 0 0.65vw;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin: 0.88rem 0 0.65rem;
   }
 
   .band_member {
-    font-size: 1.88vw;
-    line-height: 1.5;
+    font-size: 1.3rem;
+    line-height: 1.3;
   }
 
   td.member_part, td.member_name {
-    padding-bottom: 0.65vw;
+    padding-bottom: 0.65rem;
   }
 
   .band_space {
@@ -973,9 +1045,9 @@ h2.ttl_02 {
 
   .band_space_img {
     position: absolute;
-    bottom: 3vw;
-    right: 2vw;
-    width: 18vw;
+    bottom: 3rem;
+    right: 2rem;
+    width: 18rem;
   }
 }
 
@@ -1011,26 +1083,27 @@ h2.ttl_03 {
 @container style(--breakpoint: true) {
   .timetable {
     display: flex;
+    border-radius: 4rem 0 0 4rem;
     flex-wrap: wrap;
-    gap: 1vw;
+    gap: 1rem;
     justify-content: flex-end;
-    padding: 9vw 0 9vw 11vw;
+    padding: 4rem 0 4rem 5rem;
   }
 
   h2.ttl_03 {
     color: #bababa;
-    font-size: 7vw;
+    font-size: 5rem;
     font-weight: 800;
     text-align: center;
     margin-bottom: 0;
     letter-spacing: 8px;
-    width: 11vw;
+    width: 1rem;
     writing-mode: vertical-rl;
     order: 2;
   }
 
   .timetable_inner {
-    font-size: 2.5vw;
+    font-size: 1.75rem;
     line-height: 2;
     letter-spacing: 5px;
     order: 1;
@@ -1071,39 +1144,33 @@ h2.ttl_04 {
 
 @container style(--breakpoint: true) {
   .ticket {
-    padding: 5vw;
+    padding: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 4vw;
   }
 
   h2.ttl_04 {
-    font-size: 4vw;
+    font-size: 2.5rem;
     font-weight: 100;
     letter-spacing: 5px;
-    text-align: left;
-  }
-
-  .ticket_detail {
-    font-size: 2.2vw;
-    text-align: center;
   }
 
   .link_btn02 a {
-    border-radius: 0.5vw;
-    font-size: 2vw;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    padding: 0.75vw 1.25vw;
+    padding: 0.75rem 1.25rem;
   }
 
   .ticket_detail {
-    font-size: 2.2vw;
+    font-size: 1.3rem;
     border: 1px solid var(--white);
-    border-radius: 0.5vw;
-    padding: 3vw;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 1.25rem;
   }
 }
 
@@ -1111,6 +1178,7 @@ h2.ttl_04 {
 /* footer */
 /*  ========================================================================== */
 footer {
+  background: var(--background);
   position: relative;
   text-align: center;
   padding: 3rem 0;
