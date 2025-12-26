@@ -459,12 +459,6 @@ ul.nav-menu_icon li a img {
   align-items: center;
 }
 
-@container style(--breakpoint: true) {
-  section:not(.ttl) {
-    max-width: 1200px;
-  }
-}
-
 /* ========================================================================== */
 /* ttl */
 /* ========================================================================== */
@@ -503,6 +497,7 @@ ul.nav-menu_icon li a img {
 /* ========================================================================== */
 .info {
   margin: 0 5vw 10vw;
+  max-width: 1200px;
 }
 
 h2.ttl_01 {
@@ -633,7 +628,7 @@ h2.ttl_01 {
 
 /* チケット料金 */
 .info_ticket {
-  margin: 0 0 5rem;
+  margin: 0 0 2rem;
 }
 
 .info_ticket_ttl p {
@@ -727,7 +722,7 @@ h2.ttl_01 {
     display: flex;
     flex-direction: row;
     gap: clamp(1rem, -0.308rem + 3.077vw, 2rem);
-    margin: clamp(1rem, -0.308rem + 3.077vw, 2rem) 0;
+    margin: clamp(1rem, -0.308rem + 3.077vw, 2rem) 0 clamp(2rem, 0.222rem + 3.604vw, 3rem);
     padding: clamp(1rem, -0.308rem + 3.077vw, 2rem);
     width: 100%;
   }
@@ -755,7 +750,7 @@ h2.ttl_01 {
 
   .place_name {
     order: 1;
-    font-size: clamp(1.55rem, 0.700rem + 2vw, 2.2rem);
+    font-size: clamp(1.3rem, -0.478rem + 3.604vw, 2.3rem);
     font-weight: 200;
     letter-spacing: 3px;
     margin-bottom: 1vw;
@@ -769,13 +764,13 @@ h2.ttl_01 {
   .plase_url a {
     padding: 0.5vw 0.75vw;
     margin-right: 0.7vw;
-    font-size: 1.5vw;
+    font-size: clamp(1rem, 0.111rem + 1.852vw, 1.5rem);
   }
 
   .place_address {
     order: 3;
     margin-bottom: 1.5vw;
-    font-size: 1.8vw;
+    font-size: clamp(1rem, 0.111rem + 1.852vw, 1.5rem);
   }
 
   .info_ticket {
@@ -783,11 +778,12 @@ h2.ttl_01 {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0 0 8rem;
     width: 100%;
   }
 
   .info_ticket_ttl p {
-    font-size: 3.6vw;
+    font-size: clamp(2rem, 0.222rem + 3.604vw, 3rem);
     padding-right: 2.5vw;
     letter-spacing: 6px;
   }
@@ -802,12 +798,12 @@ h2.ttl_01 {
   }
 
   .info_ticket_price p {
-    font-size: 3.5vw;
+    font-size: clamp(2rem, 0.222rem + 3.604vw, 3rem);
     letter-spacing: 6px;
   }
 
   .link_btn01 a {
-    font-size: 1.88vw;
+    font-size: clamp(1.3rem, 0.944rem + 0.741vw, 1.5rem);
     margin-bottom: 2.5vw;
     border-radius: 0.75vw;
     padding: 1.3vw 1.88vw;
@@ -824,7 +820,8 @@ h2.ttl_01 {
   background-image: url(/assets/img/common/band_bg.png);
   border-radius: 0 10vw 0 0;
   padding: 2.5rem 5vw;
-  margin-bottom: 4rem;
+  margin: 0 auto 4rem 0;
+  width: 100%;
 }
 
 h2.ttl_02 {
@@ -902,13 +899,18 @@ h2.ttl_02 {
   .band {
     background-size: cover;
     background-repeat: repeat-y;
-    padding: 5vw;
+    padding: 10vw;
+    padding-top: 8vw;
+    padding-right: 6vw;
+    padding-bottom: 6vw;
+    margin: 0 auto 10rem 0;
+    max-width: clamp(45.98rem, -25.878rem + 149.704vw, 86.4rem);
   }
 
   .band_flexbox {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 3vw;
+    gap: clamp(1.5rem, -0.278rem + 3.604vw, 2.5rem);
   }
 
   .band_flexbox .fade {
@@ -957,7 +959,7 @@ h2.ttl_02 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.5vw;
+    font-size: clamp(2rem, 0.222rem + 3.604vw, 3rem);
     letter-spacing: 6px;
   }
 
@@ -967,27 +969,23 @@ h2.ttl_02 {
   }
 
   .band_detail, .center .band_detail, .right .band_detail {
-    border-radius: 0 2vw 2vw 0;
+    border-radius: 0 100vh 100vh 0;
     color: var(--white);
-    font-size: 1.25vw;
-    top: -1.35vw;
+    font-size: clamp(0.65rem, 0.028rem + 1.296vw, 1rem);
+    top: clamp(-0.9rem, -0.011rem + -1.852vw, -1.4rem);
     left: -1px;
     right: auto;
     padding: 0.75vw 1.35vw;
   }
 
   .band_name {
-    font-size: 2.5vw;
-    margin: 0.88vw 0 0.65vw;
+    font-size: clamp(1.3rem, -0.300rem + 3.333vw, 2.2rem);
+    margin: 0.25rem 0 0.2rem;
   }
 
   .band_member {
-    font-size: 1.88vw;
-    line-height: 1.5;
-  }
-
-  td.member_part, td.member_name {
-    padding-bottom: 0.65vw;
+    font-size: clamp(0.85rem, -0.128rem + 2.037vw, 1.4rem);
+    line-height: 1.7;
   }
 
   .band_space {
@@ -996,9 +994,8 @@ h2.ttl_02 {
 
   .band_space_img {
     position: absolute;
-    bottom: 3vw;
-    right: 2vw;
-    width: 18vw;
+    bottom: 0;
+    right: 0;
   }
 }
 
@@ -1035,25 +1032,25 @@ h2.ttl_03 {
   .timetable {
     display: flex;
     flex-wrap: wrap;
-    gap: 1vw;
+    gap: clamp(1rem, -0.308rem + 3.077vw, 2rem);
     justify-content: flex-end;
-    padding: 9vw 0 9vw 11vw;
+    padding: 9vw 10vw 9vw 11vw;
   }
 
   h2.ttl_03 {
     color: #bababa;
-    font-size: 7vw;
+    font-size: clamp(3.7rem, -1.633rem + 11.111vw, 6.7rem);
     font-weight: 800;
     text-align: center;
     margin-bottom: 0;
     letter-spacing: 8px;
-    width: 11vw;
+    width: fit-content;
     writing-mode: vertical-rl;
     order: 2;
   }
 
   .timetable_inner {
-    font-size: 2.5vw;
+    font-size: clamp(1.5rem, -0.278rem + 3.704vw, 2.5rem);
     line-height: 2;
     letter-spacing: 5px;
     order: 1;
@@ -1101,23 +1098,25 @@ h2.ttl_04 {
     align-items: center;
     justify-content: center;
     gap: 4vw;
+    margin: 0 calc(50% - 50vw);
+    width: 100vw;
   }
 
   h2.ttl_04 {
-    font-size: 4vw;
+    font-size: clamp(2rem, -1.556rem + 7.407vw, 4rem);
     font-weight: 100;
     letter-spacing: 5px;
     text-align: left;
   }
 
   .ticket_detail {
-    font-size: 2.2vw;
+    font-size: clamp(1rem, -0.778rem + 3.704vw, 2rem);
     text-align: center;
   }
 
   .link_btn02 a {
     border-radius: 0.5vw;
-    font-size: 2vw;
+    font-size: clamp(1.05rem, 0.250rem + 1.667vw, 1.5rem);
     font-weight: 500;
     padding: 0.75vw 1.25vw;
   }
@@ -1141,6 +1140,10 @@ footer {
 
 .copyright {
   font-size: 1.25rem;
+}
+
+.copyright a {
+  color: ;
 }
 
 /* トップへ戻るボタン */
