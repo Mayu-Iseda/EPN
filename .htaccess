@@ -1,10 +1,2 @@
-# AccessControl IP/HOST
-order deny,allow
-deny from all
-allow from 122.130.133.191
-allow from 124.214.201.75
-allow from 61.127.121.106
-allow from 1.73.27.201
-
 Options +Includes
 AddHandler server-parsed html
